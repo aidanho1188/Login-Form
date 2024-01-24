@@ -39,8 +39,6 @@
       const passwordInput = document.getElementById('password');
       const eyeOpen = document.querySelector('.toggle-password #eye-open');
       const eyeClosed = document.querySelector('.toggle-password #eye-close');
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
       const loginBtn = document.getElementById("login");
 
       const fakeLogin = {
@@ -57,14 +55,21 @@
       });
 
       loginBtn.addEventListener('click', (evt) => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
         evt.preventDefault();
-        if (fakeLogin[email] === password) {
-          alert("Login successful!");
-          // Extra credit query string
-          // const successUrl = `/success?email=${email}&password=${password}`;
-          // window.location = successUrl;
+        
+        if(email && password ){
+          if (fakeLogin[email] === password) {
+            alert("Login successful!");
+            // Extra credit query string
+            // const successUrl = `/success?email=${email}&password=${password}`;
+            // window.location = successUrl;
+          } else {
+            alert("It looks like your email or password is incorrect. Please try again."); // We don't want the user to know which information is incorrect for the sake of security
+          }
         } else {
-          alert("It looks like your email or password is incorrect. Please try again."); // We don't want the user to know which information is incorrect for the sake of security
+          alert("Please enter your information");
         }
       })
 
