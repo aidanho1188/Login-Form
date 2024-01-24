@@ -39,8 +39,8 @@
       const passwordInput = document.getElementById('password');
       const eyeOpen = document.querySelector('.toggle-password #eye-open');
       const eyeClosed = document.querySelector('.toggle-password #eye-close');
-      const email = document.getElementById("email");
-      const password = document.getElementById("password");
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
       const loginBtn = document.getElementById("login");
 
       const fakeLogin = {
@@ -58,12 +58,37 @@
 
       loginBtn.addEventListener('click', (evt) => {
         evt.preventDefault();
-        if (fakeLogin[email.value] === password.value) {
+        if (fakeLogin[email] === password) {
           alert("Login successful!");
+          // Extra credit query string
+          // const successUrl = `/success?email=${email}&password=${password}`;
+          // window.location = successUrl;
         } else {
-          alert("Login failed!");
+          alert("It looks like your email or password is incorrect. Please try again."); // We don't want the user to know which information is incorrect for the sake of security
         }
       })
+
+      // Extra credit:
+      // Fetching
+      // async function getData(successUrl="", data ={}) {
+      //   try {
+            // query string fetching
+            // const res = await fetch(successUrl);
+            // const data = await resp.json();
+            // console.log(data);
+
+            // fetching using body
+            // const res = await fetch(successUrl, {
+            //   method: 'GET',
+            //   headers: {
+            //   "Content-Type": "application/json",
+            //   },
+            //   body: JSON.stringify(data),
+            //  });
+      //   } catch (error) {
+      //       console.log(error);
+      //   }
+      // }
     </script>
 </body>
 
